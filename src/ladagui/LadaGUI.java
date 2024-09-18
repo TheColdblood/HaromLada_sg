@@ -4,6 +4,9 @@
  */
 package ladagui;
 
+import java.awt.TrayIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author logan
@@ -46,6 +49,11 @@ public class LadaGUI extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jToggleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bronze.png"))); // NOI18N
+        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Arany hazudik");
 
@@ -74,7 +82,11 @@ public class LadaGUI extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/silver.png"))); // NOI18N
-        jToggleButton2.setText("");
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("A kincs nem bennem van");
 
@@ -83,7 +95,7 @@ public class LadaGUI extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jToggleButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
@@ -121,7 +133,7 @@ public class LadaGUI extends javax.swing.JFrame {
                 .addComponent(jToggleButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,8 +202,27 @@ public class LadaGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(rootPane, "Nem ebben a ládában volt a kincs!", "Arany láda", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        //JOptionPane.showMessageDialog(rootPane, "Gratulálok, ebben a ládában volt a kincs!", "Ezüst láda", JOptionPane.WARNING_MESSAGE);
+        boolean kincsAllapot = true;
+        
+        if (kincsAllapot == true) {
+            int valasztas = JOptionPane.YES_NO_OPTION;
+            int eredmeny = JOptionPane.showConfirmDialog(rootPane, "Gratulálok, ebben a ládában volt a kincs! \n Kiveszed a kincset?", "Ezüst láda", valasztas ,JOptionPane.WARNING_MESSAGE);
+            if (eredmeny == JOptionPane.YES_OPTION){
+                kincsAllapot = false;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ebben a ládában nincs kincs!", "Ezüst láda", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+        JOptionPane.showMessageDialog(rootPane, "Nem ebben a ládában volt a kincs!", "Bronz láda", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     /**
      * @param args the command line arguments
